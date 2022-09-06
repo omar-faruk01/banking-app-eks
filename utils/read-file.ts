@@ -1,11 +1,11 @@
 import * as fs from 'fs';
-import * as yaml from 'js-yaml';
-import * as eks from '@aws-cdk/aws-eks';
-import {KubernetesManifest} from "@aws-cdk/aws-eks/lib/k8s-manifest";
+const yaml = require('js-yaml');
+import * as eks from 'aws-cdk-lib/aws-eks';
+
 
 
 export function readYamlFromDir(dir: string, cluster: eks.Cluster) {
-  let previousResource: KubernetesManifest;
+  let previousResource: eks.KubernetesManifest;
   fs.readdirSync(dir, "utf8").forEach(file => {
     if (file != undefined && file.split('.').pop() == 'yaml') {
       let data = fs.readFileSync(dir + file, 'utf8');
