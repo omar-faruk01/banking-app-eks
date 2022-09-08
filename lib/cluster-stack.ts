@@ -99,11 +99,6 @@ export class ClusterStack extends Stack {
         },
       }
     );
-    
-        
-    const awsAuth = new eks.AwsAuth(this, 'MyAwsAuth', {
-      cluster: cluster,
-  });
 
     // AWS ALB Controller
      new AWSLoadBalancerController(this, "AWSLoadBalancerController", {
